@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.assertj.core.api.SoftAssertions;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
@@ -58,22 +59,28 @@ public class BurgerTest {
     public void addIngredientTest() {
         int sizeBefore = burger.ingredients.size();
         burger.addIngredient(mockSauce);
-        assertEquals("Размер списка ингредиентов должен увеличится на 1",
-                sizeBefore + 1, burger.ingredients.size());
-        assertTrue("Список должен содержать добавленный ингредиент",
-                burger.ingredients.contains(mockSauce));
+
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size())
+                .as("Размер списка ингредиентов должен увеличится на 1").isEqualTo(sizeBefore + 1);
+        softly.assertThat(burger.ingredients)
+                .as("Список должен содержать добавленный ингредиент").contains(mockSauce);
+        softly.assertAll();
     }
 
     @Test
     public void removeIngredientTest() {
-        int sizeBefore = burger.ingredients.size();
         burger.addIngredient(mockSauce);
         burger.addIngredient(mockFilling);
+        int sizeBefore = burger.ingredients.size();
         burger.removeIngredient(0);
-        assertEquals("Размер списка ингредиентов должен уменьшится на 1",
-                sizeBefore + 1, burger.ingredients.size());
-        assertFalse("Список не должен содержать удалённый ингредиент",
-                burger.ingredients.contains(mockSauce));
+
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size())
+                .as("Размер списка ингредиентов должен уменьшится на 1").isEqualTo(sizeBefore - 1);
+        softly.assertThat(burger.ingredients)
+                .as("Список не должен содержать удалённый ингредиент").doesNotContain(mockSauce);
+        softly.assertAll();
     }
 
     @Test
@@ -81,10 +88,13 @@ public class BurgerTest {
         burger.addIngredient(mockFilling);
         burger.addIngredient(mockSauce);
         burger.moveIngredient(0, 1);
-        assertEquals("Ингредиент перемещен",
-                mockFilling, burger.ingredients.get(1));
-        assertEquals("Другой ингредиент тоже перемещен",
-                mockSauce, burger.ingredients.get(0));
+
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.get(1))
+                .as("Ингредиент перемещен").isEqualTo(mockFilling);
+        softly.assertThat(burger.ingredients.get(0))
+                .as("Другой ингредиент тоже перемещен").isEqualTo(mockSauce);
+        softly.assertAll();
     }
 
     @Test
