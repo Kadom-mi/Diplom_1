@@ -2,7 +2,7 @@
 
 [Веб‑приложение Stellar Burgers](https://stellarburgers.education-services.ru/)
 
-[URL сервиса](https://github.com/Kadom-mi/Diplom_1)
+[Github](https://github.com/Kadom-mi/Diplom_1)
 
 ## Подготовка проекта
 Создать Maven‑проект и подключить следующие библиотеки:
