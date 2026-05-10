@@ -1,8 +1,6 @@
-# Автоматизация тестов для Stellar Burgers
+# Автоматизация тестов для Stellar Burgers. Юнит‑тесты
 
 [Веб‑приложение Stellar Burgers](https://stellarburgers.education-services.ru/)
-
-[Github](https://github.com/Kadom-mi/Diplom_1)
 
 ## Подготовка проекта
 Создать Maven‑проект и подключить следующие библиотеки:
@@ -10,7 +8,7 @@
 * Mockito — для создания моков
 * JaCoCo — для измерения покрытия кода
 
-## Задание. Юнит‑тесты
+## Задание
 1. Склонировать [репозиторий](https://github.com/yandex-praktikum/qa-java-project) с заготовкой кода
 2. Покрыть тестами класс `Burger`. Использовать моки, стабы и параметризацию там, где нужно
 
